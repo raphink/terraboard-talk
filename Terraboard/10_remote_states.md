@@ -8,3 +8,8 @@ Various backends:
 * http, ??
 * ???
 
+
+!SLIDE
+## Where is my resource managed?
+
+
