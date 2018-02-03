@@ -54,6 +54,37 @@ EOF
 }
 
 resource "aws_s3_bucket_policy" "terraboard" {
-  bucket = "terraboard-test"
+  bucket = "${aws_s3_bucket.terraform-state.bucket}"
   policy = "${data.aws_iam_policy_document.terraboard.json}"
+}
+
+
+resource "docker_container" "terraboard-postgres" {
+  name = "terraboard-postgres"
+  image = "postgres:9.5"
+  env = [
+    "POSTGRES_USER=tb",
+    "POSTGRES_PASSWORD=mypass",
+    "POSTGRES_DB=terraboard"
+  ]
+}
+
+resource "docker_container" "terraboard" {
+  name = "terraboard"
+  image = "camptocamp/terraboard:0.14.0"
+  ports {
+    internal = "8080"
+    external = "8080"
+  }
+  env = [
+    "AWS_REGION=${aws_s3_bucket.terraform-state.region}",
+    "AWS_ACCESS_KEY_ID=${aws_iam_access_key.terraboard.id}",
+    "AWS_SECRET_ACCESS_KEY=${aws_iam_access_key.terraboard.secret}",
+    "AWS_BUCKET=${aws_s3_bucket.terraform-state.bucket}",
+    "DB_USER=tb",
+    "DB_PASSWORD=mypass",
+    "DB_NAME=terraboard",
+    "DB_HOST=${docker_container.terraboard-postgres.ip_address}",
+    "AWS_FILE_EXTENSION=_state"
+  ]
 }
