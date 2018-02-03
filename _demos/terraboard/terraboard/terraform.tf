@@ -1,7 +1,7 @@
 terraform {
   backend "s3" {
     bucket         = "terraboard-demo"
-    key            = "env:/terraform_state"
+    key            = "env:/terraboard"
     profile        = "sandbox"
     region         = "eu-west-1"
     dynamodb_table = "demo-terraform-statelock"
