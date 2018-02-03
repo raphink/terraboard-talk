@@ -58,10 +58,13 @@ resource "aws_s3_bucket_policy" "terraboard" {
   policy = "${data.aws_iam_policy_document.terraboard.json}"
 }
 
+resource "docker_image" "postgres" {
+  name = "postgres:9.5"
+}
 
 resource "docker_container" "terraboard-postgres" {
   name = "terraboard-postgres"
-  image = "postgres:9.5"
+  image = "${docker_image.postgres.latest}"
   env = [
     "POSTGRES_USER=tb",
     "POSTGRES_PASSWORD=mypass",
@@ -69,9 +72,13 @@ resource "docker_container" "terraboard-postgres" {
   ]
 }
 
+resource "docker_image" "terraboard" {
+  name = "camptocamp/terraboard:0.14.0"
+}
+
 resource "docker_container" "terraboard" {
   name = "terraboard"
-  image = "camptocamp/terraboard:0.14.0"
+  image = "${docker_image.terraboard.latest}"
   ports {
     internal = "8080"
     external = "8080"
