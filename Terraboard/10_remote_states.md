@@ -3,13 +3,19 @@
 
 Various backends:
 
-* <img src="../_images/aws-s3.png" width="30px" style="display:inline" /> s3, lock with dynamodb
-* <img src="../_images/consul-logo-grad.png" width="30px" style="display:inline" /> consul, including lock
-* http, ??
-* ???
+* s3, locking with dynamodb
+* consul, including locking
+* etcd (no locking)
+* http (optional locking)
+* swift (no locking)
+* etc.
 
 
 !SLIDE
 ## Where is my resource managed?
 
+#### Common issue:
+
+Find which Terraform configuration manages a resource using one of its
+parameters
 

@@ -1,17 +1,11 @@
 !SLIDE
-## Installing: with `go get`
+## Installing
 
 
-```shell
-$ go get github.com/camptocamp/terraboard
-```
+Various options:
 
-!SLIDE
-## Installing: with Docker
-
+* with `go get`
+* with a Docker image
+* using a Rancher catalog template
 
 
-
-
-* In Rancher/OpenShift
-* Using Terraform
