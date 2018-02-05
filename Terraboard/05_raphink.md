@@ -7,4 +7,5 @@
 
 * Infrastructure Developer
 * Devops Enthusiast
-* Augeas Developer
+* Terraform contributor (Rancher provider maintainer, PuppetDB/PuppetCA/Pass
+  providers)
