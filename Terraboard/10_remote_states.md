@@ -19,3 +19,5 @@ Various backends:
 Find which Terraform configuration manages a resource using one of its
 parameters
 
+
+![Where](../_images/where.jpg)

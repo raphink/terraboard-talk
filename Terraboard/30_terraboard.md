@@ -1,11 +1,13 @@
 !SLIDE
 ## Introducing Terraboard
 
-* Web interface for remote state visualization and querying
+A web interface for remote state visualization and querying
+
+![Terraboard](../_images/terraboard_logo.png)
+
 * Written in Go + AngularJS
 * Supports S3 remote + DynamoDB table
 * Uses PostgreSQL as a database
-
 
 !SLIDE
 ## Main view
