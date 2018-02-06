@@ -95,4 +95,5 @@ resource "docker_container" "terraboard" {
     "DB_HOST=${docker_container.terraboard-postgres.ip_address}",
     "AWS_FILE_EXTENSION=_state"
   ]
+  restart = "always"
 }

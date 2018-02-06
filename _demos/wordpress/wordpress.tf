@@ -21,9 +21,5 @@ resource "docker_container" "wordpress" {
     "WORDPRESS_DB_HOST=${docker_container.mysql.ip_address}",
     "WORDPRESS_DB_PASSWORD=secpass"
   ]
-  ports {
-    internal = "80"
-    external = "8081"
-  }
 }
 
