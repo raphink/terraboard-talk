@@ -1,10 +1,10 @@
-resource "docker_image" "mysql" {
-  name = "mysql:latest"
+resource "docker_image" "mariadb" {
+  name = "mariadb:5.5"
 }
 
 resource "docker_container" "mysql" {
   name = "wordpress-mysql"
-  image = "${docker_image.mysql.latest}"
+  image = "${docker_image.mariadb.latest}"
   env = [
     "MYSQL_ROOT_PASSWORD=secpass"
   ]
